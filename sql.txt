@@ -1,0 +1,20 @@
+create database proj;
+use proj;
+
+create table menu(
+id int  NOT NULL AUTO_INCREMENT,
+name varchar(20) ,
+price decimal(10,3),
+active varchar(3),
+Date varchar(10),
+category varchar(20),
+delivery varchar(3),
+PRIMARY KEY (id)
+);
+
+
+insert into menu(name,price,active,Date,category,delivery) values("sandwich",99.00,"yes","15/03/2017","Main Course","yes");
+insert into menu (name,price,active,Date,category,delivery) values("Burger",128.00,"yes","23/12/2017","Main Course","no");
+insert into menu (name,price,active,Date,category,delivery) values("pizza",149.00,"yes","21/08/2018","Main Course","yes");
+insert into menu (name,price,active,Date,category,delivery) values("french fries",57.00,"yes","15/01/2020","starters","yes");
+insert into menu (name,price,active,Date,category,delivery) values("brownie",32.00,"no","25/06/2019","dessert","no");
