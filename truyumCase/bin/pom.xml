@@ -27,11 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		  <dependency>
-	<groupId>jstl</groupId>
-	<artifactId>jstl</artifactId>
-	<version>1.2</version>
-  </dependency>
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
 <dependency>
     <groupId>org.apache.tomcat</groupId>

@@ -1,12 +1,10 @@
-<%@page import="com.model.MenuBean"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,16 +38,15 @@ justify-content: flex-end;
   <a class="btn btn-light" href="/" >Logout</a>
 </nav>
 
-<center>
+
 <p style="font-size: 50px">
 Menu Items
 </p>
-</center>
 <br/>
 <br/>
 <br/>
-<table class="table table-hover table-dark">
 
+<table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -62,22 +59,7 @@ Menu Items
     </tr>
   </thead>
   <tbody>
-  
-  <%
-  List<MenuBean> mlist=(List<MenuBean>)request.getAttribute("menu");
-  for(MenuBean mb:mlist){
-  %>
-<tr>
-<td><%=mb.getName() %></td>
-<td><%=mb.getPrice() %></td>
-<td><%=mb.getActive() %></td>
-<td><%=mb.getDate() %></td>
-<td><%=mb.getCategory() %></td>
-<td><%=mb.getDelivery()%></td>
-<td><a class="btn btn-outline-info" href="#">Edit</a></td>
-</tr>  
-  <%} %>
-  <!--  tr>
+    <tr>
       <td>Sandwich</td>
 			<td>rs.99</td>
 			<td>Yes</td>
@@ -95,12 +77,12 @@ Menu Items
 			<td>No</td>
 			<td><a class="btn btn-outline-info" href="/ed">Edit</a></td>
 			
-    </tr -->
+    </tr>
    
   </tbody>
 </table>
 <center>
-<a href="/add" class="btn btn-secondary btn-lg btn-block">Add New Product</a>
+<a href="#" class="btn btn-secondary btn-lg btn-block">Add New Product</a>
 </center>
 
 </body>
