@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+
+
+
+
+
+  <link rel="stylesheet" href="assets/ol3/css/ol.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/samples.css" type="text/css" />
+</head>
+
+<body>
+
+  <div id="map" class="full-map"></div>
+
+
+  <div id="overlay" class="marker"><img src="assets/bus.png" class="marker"></div>
+  <embed src="time.mp3" width="0" height="0" autostart="false" enablejavascript="true" id="snd">
+  <script src="assets/ol3/js/ol-debug.js"></script>
+  <script>
+    // 11.090115,76.942066
+    // 11.090147,76.941905
+
+    function soundplay() {
+      var sound = new Audio("time.mp3");
+      sound.play();
+
+    }
+    console.log("hi");
+    var loc = [[10.998027, 76.989911], [10.998011, 76.989986], [10.997995, 76.990045], [10.997995, 76.990115], [10.997943, 76.990316], [10.997932, 76.990386], [10.997927, 76.990478], [10.997906, 76.990547], [10.997916, 76.990617], [10.997906, 76.990687], [10.997885, 76.990724], [10.997890, 76.990799], [10.997874, 76.990858], [10.997879, 76.990939], [10.997864, 76.991009], [10.997842, 76.991078], [10.997842, 76.991164], [10.997816, 76.991234], [10.997800, 76.991304], [10.997785, 76.991395], [10.997769, 76.991481], [10.997763, 76.991583], [10.997769, 76.991680], [10.997748, 76.991771], [10.997727, 76.991862], [10.997716, 76.991943], [10.997706, 76.992029], [10.997685, 76.992075], [10.997674, 76.992188], [10.997648, 76.992301], [10.997642, 76.992392], [10.997616, 76.992494], [10.997600, 76.992574], [10.997584, 76.992682], [10.997569, 76.992795], [10.997542, 76.992929], [10.997532, 76.993026], [10.997511, 76.993117], [10.997511, 76.993224], [10.997511, 76.993224], [10.997463, 76.993444], [10.997448, 76.993531], [10.997442, 76.993644], [10.997411, 76.993746], [10.997390, 76.993853], [10.997369, 76.993971], [10.997347, 76.994073], [10.997332, 76.994181], [10.997321, 76.994310], [10.997290, 76.994422], [10.997263, 76.994530], [10.997242, 76.994637], [10.997221, 76.994739], [10.997190, 76.994857], [10.997174, 76.994992], [10.997163, 76.995142], [10.997158, 76.995255], [10.997147, 76.995373], [10.997121, 76.995475], [10.997132, 76.995598], [10.997111, 76.995631], [10.997112, 76.995685], [10.997106, 76.995749], [10.997117, 76.995830], [10.997106, 76.995905], [10.997096, 76.995996], [10.997096, 76.995996], [10.997090, 76.996163], [10.997090, 76.996163], [10.997090, 76.996163], [10.997090, 76.996388], [10.997090, 76.996458], [10.997080, 76.996549], [10.997080, 76.996549], [10.997096, 76.996715], [10.997101, 76.996790], [10.997101, 76.996881], [10.997096, 76.996956], [10.997127, 76.997026], [10.997096, 76.997091], [10.997085, 76.997182], [10.997112, 76.997316], [10.997101, 76.997434], [10.997080, 76.997520], [10.997101, 76.997627], [10.997106, 76.997724], [10.997122, 76.997836], [10.997101, 76.997949], [10.997117, 76.998067], [10.997101, 76.998169], [10.997122, 76.998292], [10.997117, 76.998410], [10.997122, 76.998523], [10.997122, 76.998609], [10.997112, 76.998732], [10.997127, 76.998823], [10.997117, 76.998941], [10.997122, 76.999043], [10.997122, 76.999156], [10.997112, 76.999258], [10.997117, 76.999349], [10.997122, 76.999446], [10.997133, 76.999542]]
+    var center = ol.proj.transform([76.995685, 10.997112], 'EPSG:4326', 'EPSG:3857');
+    var map = new ol.Map({
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      target: 'map',
+      view: new ol.View({
+        center: center,
+        zoom: 17
+      })
+    })
+
+    let i = 0;
+    repeat()
+    function repeat() {
+      console.log("h12");
+      const inter = setInterval(() => {
+        console.log(i);
+        // var stop = document.getElementById("busStop").value;
+        // var no = document.getElementById("busNo").value;
+        // // console.log(stop + " " + no);
+        var loc1;
+        const params = new URLSearchParams(document.location.search);
+
+        const no = params.get("busNo");
+        const stop = params.get("busStop");
+        if (stop == "tax office")
+          loc1 = 0;
+        else if (stop == "olumpus")
+          loc1 = 25;
+        else if (stop == "ramanathapuram")
+          loc1 = 63;
+        else
+          loc1 = 102;
+
+        // console.info(s); //show C
+        // console.info(o);
+        // while (i <= 10) {
+        draw(loc[i][1], loc[i][0]);
+        i += 1;
+        // if (i == 20)
+        //   soundplay();
+        // if (i == 25) {
+
+        //   alert("BUS REACHED OLUMBUS STOP");
+
+        // }
+        // if (i == 63)
+        //   alert("BUS REACHED RAMANATHAPURAM");
+        // if (i == 102) {
+        //   alert("BUS REACHED Sowripalaym pirivu");
+        //   clearInterval(inter);
+        // }
+        // // if(loc-3==i)
+        // soundplay();
+        if (i == loc1) {
+
+          alert("BUS No " + no + " REACHED " + stop);
+          if (loc1 == 102)
+            clearInterval(inter);
+
+        }
+
+      }
+
+        , 400);
+
+    }
+    function draw(x, y) {
+      var feature = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.transform([x, y], 'EPSG:4326',
+          'EPSG:3857'))
+      })
+      var vectorSource = new ol.source.Vector({
+        features: [feature]
+      })
+      var vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+      })
+      var center1 = ol.proj.transform([x, y], 'EPSG:4326', 'EPSG:3857');
+      var overlay = new ol.Overlay({
+        position: center1,
+        element: document.getElementById('overlay')
+      });
+
+      const view = new ol.View({
+        center: center1,
+        zoom: 17
+      })
+
+      map.setView(view);
+      map.addOverlay(overlay);
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>
