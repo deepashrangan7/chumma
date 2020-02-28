@@ -42,7 +42,7 @@ tbody>
 <f:form action="/added">
   <div class="form-group">
     <label for="name">Name</label>
-    &nbsp;&nbsp;&nbsp; <input type="text" class="form-control" name="name" id="exampleInputEmail1">
+    &nbsp;&nbsp;&nbsp; <f:input type="text" path="name" class="form-control" name="name" id="exampleInputEmail1"/>
   </div>
   <div class="form-group">
     
@@ -51,29 +51,31 @@ tbody>
   <div class="row">
     <div class="col">
       <span >Price(Rs.)</span>
-      &nbsp;&nbsp;&nbsp; <input type="text" class="form-control"  name="price" id="exampleInputPassword1">
+      &nbsp;&nbsp;&nbsp; <f:input path="price" type="text" class="form-control"  name="price" id="exampleInputPassword1"/>
     </div>
     <div class="col">
       <br/>Active<br/>
-&nbsp;&nbsp;&nbsp;      <input class="form-check-input" type="radio" name="active" id="active" value="yes" checked>Yes
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" name="active" id="active1" value="no" >No     
+&nbsp;&nbsp;&nbsp; 
+<input class="form-check-input"  type="radio" name="active"  value="yes" checked/>Yes
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<f:input class="form-check-input" path="active" type="radio" name="active"  value="no" />No     
 </div>
 <div class="col">
 <br/>
   <span >Date Of Launch</span>
-  <input type="text" class="form-control" id="date" name="date" placeholder="DD/MM/YYYY">
+  <input type="text" class="form-control" id="date" name="Date" placeholder="DD/MM/YYYY"/>
 </div>
 
 <div class="col">
   <br/>
     <span >Category</span>
     <br/>
-  <select id="category" name="category">
-<option value="main" selected>Main Course</option>
-<option value="start">Starters</option>
+  <f:select path="category" id="category" name="category">
+<option value="maincourse" selected>Main Course</option>
+<option value="starters">Starters</option>
 <option value="dessert">Dessert</option>
 <option value="drinks">Drinks</option>
-  </select>  
+  </f:select>  
   
   
   </div>
@@ -85,7 +87,7 @@ tbody>
 
   <br/>
   <br/> <br/>
-  <button type="submit" class="btn btn-primary">Add Product</button>
+  <button type="submit" class="btn btn-primary" >Add Product</button>
 </f:form>
 
 

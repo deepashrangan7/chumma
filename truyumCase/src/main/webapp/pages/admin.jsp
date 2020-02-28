@@ -22,7 +22,7 @@ justify-content: flex-end;
 
 </style>
 <meta charset="ISO-8859-1">
-<title>Choose User Type</title>
+<title>Menu</title>
 </head>
 <body>
 <!-- header style="background-color: black;color: white">
