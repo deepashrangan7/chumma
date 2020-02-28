@@ -2,6 +2,8 @@ package com.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -11,9 +13,10 @@ import javax.validation.constraints.Pattern;
 @Table(name = "menu")
 public class MenuBean {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "name")
-	@NotEmpty
+	//@NotEmpty
 	private String name;
 	@Column(name = "price")
 	private Double price;
@@ -25,13 +28,13 @@ public class MenuBean {
 	@Column(name = "active")
 	private String active;
 	@Column(name = "Date")
-	@Pattern(regexp = "[0-9] {2}/[0-9] {2}/[0-9] {4}")
+	//@Pattern(regexp = "[0-9] {2}/[0-9] {2}/[0-9] {4}")
 	private String Date;
 	@Column(name = "category")
 
 	private String category;
 	@Column(name = "delivery")
-	private String delivery;
+	private boolean delivery;
 
 	public int getId() {
 		return id;
@@ -87,11 +90,14 @@ public class MenuBean {
 		this.category = category;
 	}
 
-	public String getDelivery() {
+	public boolean getDelivery() {
 		return delivery;
 	}
 
-	public void setDelivery(String delivery) {
+	public void setDelivery(boolean delivery) {
 		this.delivery = delivery;
 	}
+
+	
+	
 }

@@ -10,10 +10,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <style>
 #box{
 display: flex;
@@ -48,6 +50,8 @@ Menu Items
 <br/>
 <br/>
 <br/>
+
+<div class="table-responsive">
 <table class="table table-hover table-dark">
 
   <thead>
@@ -66,6 +70,12 @@ Menu Items
   <%
   List<MenuBean> mlist=(List<MenuBean>)request.getAttribute("menu");
   for(MenuBean mb:mlist){
+	  String result="no";
+	  if(mb.getDelivery()==true)
+		  result="yes";
+	  int id=mb.getId();
+	 //out.print(id);
+		  
   %>
 <tr>
 <td><%=mb.getName() %></td>
@@ -73,32 +83,14 @@ Menu Items
 <td><%=mb.getActive() %></td>
 <td><%=mb.getDate() %></td>
 <td><%=mb.getCategory() %></td>
-<td><%=mb.getDelivery()%></td>
-<td><a class="btn btn-outline-info" href="#">Edit</a></td>
+<td><%=result%></td>
+<td><a class="btn btn-outline-info" href="<%="/edit/"+id%>">Edit</a></td>
 </tr>  
   <%} %>
-  <!--  tr>
-      <td>Sandwich</td>
-			<td>rs.99</td>
-			<td>Yes</td>
-			<td>20/12/1998</td>
-			<td>Main Course</td>
-			<td>Yes</td>
-			<td><a class="btn btn-outline-info" href="/ed">Edit</a></td>
-    </tr>
-    <tr>
-    	<td>Burger</td>
-			<td>rs.89</td>
-			<td>Yes</td>
-			<td>20/12/1998</td>
-			<td>Main Course</td>
-			<td>No</td>
-			<td><a class="btn btn-outline-info" href="/ed">Edit</a></td>
-			
-    </tr -->
+
    
   </tbody>
-</table>
+</table></div>
 <center>
 <a href="/add" class="btn btn-secondary btn-lg btn-block">Add New Product</a>
 </center>

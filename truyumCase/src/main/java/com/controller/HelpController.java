@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -11,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.model.MenuBean;
@@ -34,7 +36,7 @@ public class HelpController {
 	}
 
 	@RequestMapping("/ad")
-	public String admin(@ModelAttribute("menu1")MenuBean mb,ModelMap m) {
+	public String admin(ModelMap m) {
 		List<MenuBean> obj = md.findAll();
 		m.addAttribute("menu", obj);
 		return "admin";
@@ -49,29 +51,33 @@ public class HelpController {
 	public String addMenu() {
 		return "addproduct";
 	}
+	@RequestMapping(path="/edit/{id}")
+	public String editMenu(@PathVariable("id")Integer id,Model m) {
+		//System.out.println(id+" here");
+		
+		Optional<MenuBean> mb=md.findById(id);
+		if(mb.isPresent())
+		{
+			MenuBean obj=mb.get();
+			m.addAttribute("editmenu");
+		}
+		
+		return "editproduct";
+	}
+	
+	@RequestMapping("/edited")
+	public String edited(@ModelAttribute("editmenu")MenuBean mb, Model m) {
+
+		md.save(mb);
+
+		return "redirect:ad";
+	}
 
 	@RequestMapping("/added")
-	public String added(@Valid@ModelAttribute("menu1")MenuBean mb,BindingResult br, Model m) {
-		int id = 0;
-		if(br.hasErrors())
-			return "addproduct";
-		
-		List<MenuBean> obj = md.findAll();
-		for (MenuBean o : obj)
-			id = o.getId() + 1;
-		mb.setId(id);
-		if (mb.getDelivery() == null)
-			mb.setDelivery("no");
-		else
-			mb.setDelivery("yes");
-		
-		
+	public String added(MenuBean mb, Model m) {
+
 		md.save(mb);
-		System.out.println(mb);
 
-		obj = md.findAll();
-		m.addAttribute("menu", obj);
-
-		return "admin";
+		return "redirect:ad";
 	}
 }
